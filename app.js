@@ -24,10 +24,19 @@ writeStream.write('Name,' + 'County,'+'Indictment,'+'Defendant Number,'+'DOB,'+
 
 				var value1=$(this).children().eq(1).text();
 				var value2=$(this).children().eq(3).text();
-				console.log("values",value1+value2)
-				if(csvString!==',' && (value1 || value2)){
+				console.log("value1: "+ value1+" value2 "+ value2);
+				
 
-				 csvString= csvString +','+ value1+ ','+value2;
+
+				if(csvString!==',' && (value1 && value2)){
+
+				 	csvString= csvString +','+ value1+ ','+value2;
+				}else if(csvString!==',' && value1)
+				{
+					csvString= csvString +','+ value1;
+				}else if(csvString!==',' && value2)
+				{
+					csvString= csvString +','+value2;
 				}
 			});
 			 console.log("csvString",csvString);
